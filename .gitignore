@@ -1,0 +1,38 @@
+### JAVA ###
+*.jar
+*.war
+*.ear
+*.class
+
+### ECLIPSE ###
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+.cproject
+.buildpath
+
+### GRADLE ###
+.gradle
+bin
+build
+
+!gradle-wrapper.jar
+
+### BOWER ###
+bower_components
+
+### NPM ###
+node_modules

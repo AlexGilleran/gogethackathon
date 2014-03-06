@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>GoGet Carbon Counter</title>
+        <!-- build:section cdncss -->
+        <!-- /build -->
+        <!-- build:style css -->
+        <!-- /build -->
+        <!-- build:process -->
+        <script type="text/javascript">
+            var restBaseUrl = "<%= restBaseUrl %>";
+            var thriftBaseUrl = "<%= thriftBaseUrl %>";
+        </script>
+        <!-- /build -->
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>What if GoGet pods had electric cars?</h1>
+                <div class="lead">Choose an electric car:
+                    <div id="cars-dropdown" class="btn-group"></div>
+                </div>
+            </div>
+            <div class="row map-row">
+                <div class="col-md-4">
+                    <div id="pod-panel" class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <div id="sort-dropdown" class="btn-group pull-right"></div>
+                            <h3 class="panel-title panel-title-sortable">Pods (click for stats)</h3>
+                        </div>
+                        <div class="list-group" id="pod-link-container">
+                        </div>
+                        <div class="panel-footer">
+                            <ul id="pager-pods" class="pager">
+                                <li><a href="#" class="btn btn-default prev-button">Previous</a></li>
+                                <li><a href="#" class="btn btn-default next-button">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div id="map" class="panel-body">
+                            <div id="mapContainer"></div>
+                            <div id="uiContainer"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="panel panel-default" id="pod-info-panel">
+                    </div>
+                </div>
+            </div>
+            <!-- build:script lib -->
+            <!-- /build -->
+            <!-- build:section cdnjs -->
+            <!-- /build -->
+            <script type="text/javascript" src="http://js.api.here.com/se/2.5.3/jsl.js?with=all"></script>
+            <!-- build:script js -->
+            <!-- /build -->
+        </body>
+    </html>

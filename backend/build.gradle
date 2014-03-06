@@ -1,0 +1,101 @@
+// The group name of our project
+group = 'com.alexgilleran'
+artifact = 'goget'
+
+version = '0.0.1'
+apply plugin: 'eclipse'
+
+apply plugin: 'java'
+
+repositories {    mavenCentral() }
+
+dependencies{
+    compile "javax.servlet:servlet-api:$servletVersion"
+    
+    compile "org.slf4j:jcl-over-slf4j:$slf4jVersion",
+	    "org.slf4j:jul-to-slf4j:$slf4jVersion"
+
+    compile "joda-time:joda-time:$jodaTimeVersion"
+
+    compile "org.springframework:spring-tx:$springVersion",
+	    "org.springframework:spring-orm:$springVersion",
+	    "org.springframework:spring-jdbc:$springVersion",
+	    "org.springframework:spring-aspects:$springVersion",
+	    "org.springframework:spring-web:$springVersion"
+
+    compile "org.apache.thrift:libthrift:$thiftVersion"
+
+    compile "com.sun.jersey.contribs:jersey-spring:$jerseySpringVersion",
+	    "com.sun.jersey:jersey-server:$jerseyVersion",
+	    "com.sun.jersey:jersey-core:$jerseyVersion",
+	    "com.sun.jersey:jersey-json:$jerseyVersion",
+	    "com.sun.jersey:jersey-servlet:$jerseyVersion"
+
+    compile "net.sf.supercsv:super-csv:2.1.0"
+    compile 'org.apache.commons:commons-collections4:4.0'
+    
+    compile "mysql:mysql-connector-java:5.1.18"
+    compile 'org.mybatis:mybatis:3.2.5'
+    compile "org.mybatis:mybatis-spring:$mybatisSpringVersion"
+    
+    runtime "org.slf4j:slf4j-log4j12:$slf4jVersion"
+
+    testCompile "junit:junit:4.8.2"
+    testCompile "org.springframework:spring-test:$springVersion"
+}
+
+
+sourceSets {
+    main {
+	java {
+	    srcDir "src/main/java"
+	    srcDir "$buildDir/gen-java"
+	}
+    }
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+apply plugin: 'war'
+war {
+    baseName = 'goget'
+    from 'webapp'
+}
+
+task wrapper(type: Wrapper) { gradleVersion = '1.10' }
+
+task generateThrift << {
+    def thriftFiles = fileTree(dir: '../').matching { include '*.thrift' }
+    exec {
+	executable = 'thrift'
+	args = [
+	    '--gen',
+	    'java:hashcode',
+	    '-o',
+	    'build',
+	    thriftFiles.collect { relativePath(it) }.join(",")
+	]
+    }
+}
+
+apply plugin: 'jetty'
+
+buildscript {
+    repositories { jcenter() }
+
+    dependencies { classpath 'org.gradle.api.plugins:gradle-cargo-plugin:1.4' }
+}
+apply plugin: 'cargo'
+cargo {
+    containerId = 'tomcat7x'
+    port = 8080
+
+    deployable { context = 'goget' }
+
+    remote {
+	hostname = 'alexgilleran.com'
+	username = '<redacted>'
+	password = '<redacted>'
+    }
+}

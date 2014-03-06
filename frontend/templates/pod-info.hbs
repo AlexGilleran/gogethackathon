@@ -1,0 +1,20 @@
+<div class="panel-heading">
+    <h3 class="panel-title">{{name}}</h3>
+</div>
+<div class="panel-body">
+    <p>In the month studied, <strong>{{trips.saveableCount}}</strong> out of <strong>{{trips.totalCount}}</strong> trips from the <strong>{{name}}</strong> pod were less than <strong>{{car.range}} km</strong> long, a percentage of <strong>{{trips.percentage}}%</strong>.</p>
+    <p>If these trips (excluding ones in vans, utes etc) were instead driven with a <strong>{{car.name}}</strong> charged with clean energy, <strong>{{savings.co2}} kg</strong> of carbon dioxide would be saved!</p>
+    <p>That's equivalent to <strong>{{savings.treeCount}}</strong> trees!</p>
+    <p>
+    {{#times savings.treeCount}}
+    <span class="glyphicon glyphicon-tree-conifer"></span>
+    {{/times}}
+    </p>
+    <p>In addition, assuming city mileage levels <strong>{{savings.litres}}</strong> litres of petrol would have been saved. That's <strong>{{savings.tankString}}</strong> full tanks!</p>
+    <p>
+    {{#times savings.tankCount}}
+    <span class="tanker-truck"></span>
+    {{/times}}
+    </p>
+    <p class="text-muted small">(assuming a tree absorbs <a href="http://www.arborenvironmentalalliance.com/carbon-tree-facts.asp">{{co2PerMonthTree}} kg/month</a> and the <a href="http://www.toyota.com.au/yaris/specifications/yr-3-door-hatch-manual">Yaris' tank size of {{litresInTank}}L</a>)</p>
+</div>
