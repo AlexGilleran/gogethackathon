@@ -1,7 +1,7 @@
 GoGet Carbon Counter
 ====================
 
-This is the code for my entry into the [2014 GeoNext/GoGet Hack Contest](http://www.geonext.com.au/hack-contest/). In this contest, you were given access to a bunch of data covering half of GoGet's pods for roughly the month of October 2013, and told to do whatever you wanted with it.
+This is the code for my entry into the [2014 GeoNext/GoGet Hack Contest](http://www.geonext.com.au/hack-contest/). You can see what I entered at [http://goget.alexgilleran.com](http://goget.alexgilleran.com). In this contest, you were given access to a bunch of data covering half of GoGet's pods for roughly the month of October 2013, and told to do whatever you wanted with it.
 
 The most exciting data was obviously the GPS tracking, but unfortunately the coordinates were of dubious accuracy, and worse still the cars seemed to phone home at completely random intervals, making comprehensive tracking of driver behaviour pretty futile.
 
